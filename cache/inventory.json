@@ -1,0 +1,30 @@
+[
+  {
+    "id": "632fe279-3e02-47ed-8234-dffb1825cbef",
+    "name": "Тест 1",
+    "description": "",
+    "photo": null,
+    "created_at": "2025-11-30T15:00:43.033Z"
+  },
+  {
+    "id": "f011b645-ccd4-4fcb-9a43-ebd0b286df18",
+    "name": "Тест 1",
+    "description": "",
+    "photo": null,
+    "created_at": "2025-11-30T15:01:38.125Z"
+  },
+  {
+    "id": "46c28a81-c4c9-4472-a4d5-7b6db7693223",
+    "name": "Тест 1",
+    "description": "",
+    "photo": null,
+    "created_at": "2025-11-30T15:03:06.347Z"
+  },
+  {
+    "id": "9b8417c0-3fc8-47bf-8e6a-a56157c1db58",
+    "name": "1",
+    "description": "",
+    "photo": null,
+    "created_at": "2025-11-30T15:10:08.526Z"
+  }
+]
