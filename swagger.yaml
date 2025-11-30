@@ -1,0 +1,160 @@
+openapi: 3.0.0
+info:
+  title: Inventory API
+  version: 1.0.0
+  description: Документація сервісу інвентаризації
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /register:
+    post:
+      summary: Реєстрація інвентарю
+      tags: [Inventory]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                inventory_name:
+                  type: string
+                description:
+                  type: string
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: Створено
+        '400':
+          description: Немає inventory_name
+
+  /inventory:
+    get:
+      summary: Отримати список інвентарю
+      tags: [Inventory]
+      responses:
+        '200':
+          description: OK
+
+  /inventory/{id}:
+    get:
+      summary: Отримати річ за ID
+      tags: [Inventory]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Не знайдено
+
+    put:
+      summary: Оновлення інвентарю
+      tags: [Inventory]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Не знайдено
+
+    delete:
+      summary: Видалення інвентарю
+      tags: [Inventory]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Видалено
+        '404':
+          description: Не знайдено
+
+  /inventory/{id}/photo:
+    get:
+      summary: Отримати фото
+      tags: [Inventory]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK (image/jpeg)
+        '404':
+          description: Не знайдено
+
+    put:
+      summary: Оновити фото інвентарю
+      tags: [Inventory]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Фото оновлено
+        '404':
+          description: Не знайдено
+
+  /search:
+    post:
+      summary: Пошук інвентарю
+      tags: [Inventory]
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                has_photo:
+                  type: string
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Не знайдено
